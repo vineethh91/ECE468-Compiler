@@ -1,0 +1,7 @@
+Please put your antlr.jar file in "lib" directory and submit it with other files.
+
+Make all the classes using >make all
+Print group id with >make group
+
+cd to the /classes folder and then execute
+>java -cp .:../lib/antlrworks.jar Micro ../testcases/input/test<#number>.micro

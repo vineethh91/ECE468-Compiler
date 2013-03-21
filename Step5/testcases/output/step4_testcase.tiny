@@ -1,0 +1,65 @@
+;IR code
+;LABEL main 
+;STOREI 0 Temp0 
+;STOREI Temp0 i 
+;STOREI 0 Temp1 
+;STOREI Temp1 a 
+;STOREI 0 Temp2 
+;STOREI Temp2 b 
+;LABEL label1 
+;READI p 
+;STOREI 10 Temp3 
+;LE p Temp3 label2 
+;STOREI 1 Temp4 
+;ADDI a Temp4 Temp5 
+;STOREI Temp5 a 
+;JUMP label3 
+;LABEL label2 
+;STOREI 1 Temp6 
+;ADDI b Temp6 Temp7 
+;STOREI Temp7 b 
+;LABEL label3 
+;STOREI 1 Temp8 
+;ADDI i Temp8 Temp9 
+;STOREI Temp9 i 
+;STOREI 10 Temp10 
+;LE i Temp10 label1 
+;WRITEI a 
+;WRITEI b 
+;tiny code
+var a
+var b
+var i
+var p
+move 0 r0
+move r0 i
+move 0 r1
+move r1 a
+move 0 r2
+move r2 b
+label label1
+sys readi p
+move 10 r3
+cmpi p r3
+jle label2
+move 1 r4
+move a r5
+addi r4 r5
+move r5 a
+jmp label3
+label label2
+move 1 r6
+move b r7
+addi r6 r7
+move r7 b
+label label3
+move 1 r8
+move i r9
+addi r8 r9
+move r9 i
+move 10 r10
+cmpi i r10
+jne label1
+sys writei a
+sys writei b
+sys halt

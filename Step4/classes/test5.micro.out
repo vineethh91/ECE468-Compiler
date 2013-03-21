@@ -1,0 +1,97 @@
+;LABEL main
+;ADDI a b $T1
+;STOREI $T1 c
+;MULTI g j $T2
+;MULTI i o $T3
+;ADDI $T3 $T2 $T4
+;MULTI p l $T5
+;ADDI $T5 $T4 $T6
+;ADDI $T6 a $T7
+;MULTI h j $T8
+;ADDI $T8 $T7 $T9
+;ADDI $T9 k $T10
+;STOREI $T10 b
+;MULTI a b $T11
+;ADDI $T11 i $T12
+;MULTI p p $T13
+;ADDI $T13 $T12 $T14
+;ADDI $T14 h $T15
+;ADDI $T15 j $T16
+;ADDI $T16 k $T17
+;ADDI $T17 i $T18
+;MULTI y u $T19
+;DIVI $T19 r $T20
+;ADDI $T20 $T18 $T21
+;STOREI $T21 c
+var str
+var a
+var b
+var c
+var g
+var h
+var i
+var j
+var k
+var l
+var p
+var o
+var r
+var u
+var y
+push
+push r0
+push r1
+push r2
+push r3
+jsr main
+sys halt
+label main
+link 0
+move a r1
+addi b r1
+move r1 c
+move g r2
+muli j r2
+move i r3
+muli o r3
+move r3 r4
+addi r2 r4
+move p r5
+muli l r5
+move r5 r6
+addi r4 r6
+move r6 r7
+addi a r7
+move h r8
+muli j r8
+move r8 r9
+addi r7 r9
+move r9 r10
+addi k r10
+move r10 b
+move a r11
+muli b r11
+move r11 r12
+addi i r12
+move p r13
+muli p r13
+move r13 r14
+addi r12 r14
+move r14 r15
+addi h r15
+move r15 r16
+addi j r16
+move r16 r17
+addi k r17
+move r17 r18
+addi i r18
+move y r19
+muli u r19
+move r19 r20
+divi r r20
+move r20 r21
+addi r18 r21
+move r21 c
+unlnk
+ret
+end

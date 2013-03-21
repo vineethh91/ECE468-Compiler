@@ -1,0 +1,131 @@
+var a
+var b
+var c
+var d
+var x
+var y
+var z
+var t
+push
+push r0
+push r1
+push r2
+push r3
+jsr main
+sys halt
+label main
+link 0
+move 1 r0
+move r0 a
+move 2 r1
+move r1 b
+move 10 r2
+move r2 c
+move 20 r3
+move r3 d
+sys writei a
+sys writei b
+sys writei c
+sys writei d
+move a r4
+addi b r4
+move r4 a
+sys writei a
+move a r5
+muli c r5
+move r5 b
+sys writei b
+move 0 r6
+subi a r6
+addi b r6
+move r6 c
+sys writei c
+move 0 r7
+subi d r7
+move r7 d
+sys writei d
+move a r8
+addi b r8
+move d r9
+addi c r9
+muli r9 r8
+move a r10
+addi b r10
+addi c r10
+addi d r10
+divi a r10
+subi r10 r8
+move r8 a
+sys writei a
+move 10 r11
+move a r12
+addi r11 r12
+move r12 a
+sys writei a
+move b r13
+addi a r13
+move 10 r14
+addi r14 r13
+move r13 b
+sys writei b
+move 0 r15
+move 10 r16
+subi r16 r15
+move r15 c
+sys writei c
+move 1.0 r17
+move r17 x
+move 2.0 r18
+move r18 y
+move 3.14159 r19
+move r19 z
+sys writer x
+sys writer z
+sys writer y
+move 2.0 r20
+move z r21
+divr r20 r21
+move r21 x
+move z r22
+divr y r22
+move r22 y
+sys writer x
+sys writer y
+move x r23
+addr y r23
+addr z r23
+divr z r23
+move r23 t
+sys writer t
+move t r24
+mulr t r24
+move r24 t
+sys writer t
+move t r25
+addr z r25
+addr t r25
+move 2.0 r26
+move t r27
+divr r26 r27
+addr r27 r25
+move 4.0 r28
+move z r29
+divr r28 r29
+addr r29 r25
+move 5.0 r30
+move z r31
+divr r30 r31
+addr r31 r25
+move 6.0 r32
+move z r33
+divr r32 r33
+addr r33 r25
+move 7.0 r34
+move z r35
+divr r34 r35
+addr r35 r25
+move r25 t
+sys writer t
+unlnk 
+ret 
+end

@@ -1,0 +1,103 @@
+;IR code
+;LABEL main 
+;STOREI 1 Temp0 
+;STOREI Temp0 a 
+;LABEL label1 
+;STOREI 1 Temp1 
+;NE a Temp1 label2 
+;STOREI 1 Temp2 
+;MULTI Temp2 a Temp3 
+;STOREI Temp3 g 
+;WRITEI g 
+;JUMP label3 
+;LABEL label2 
+;LABEL label3 
+;STOREI 2 Temp4 
+;NE a Temp4 label4 
+;STOREI 2 Temp5 
+;MULTI Temp5 a Temp6 
+;STOREI Temp6 p 
+;WRITEI p 
+;JUMP label5 
+;LABEL label4 
+;LABEL label5 
+;STOREI 3 Temp7 
+;NE a Temp7 label6 
+;STOREI 3 Temp8 
+;MULTI Temp8 a Temp9 
+;STOREI Temp9 k 
+;WRITEI k 
+;JUMP label7 
+;LABEL label6 
+;LABEL label7 
+;STOREI 4 Temp10 
+;NE a Temp10 label8 
+;STOREI 4 Temp11 
+;MULTI Temp11 a Temp12 
+;STOREI Temp12 u 
+;WRITEI u 
+;JUMP label9 
+;LABEL label8 
+;LABEL label9 
+;STOREI 20 Temp13 
+;ADDI a Temp13 Temp14 
+;STOREI Temp14 a 
+;STOREI 120 Temp15 
+;LE a Temp15 label1 
+;tiny code
+var a
+var k
+var g
+var p
+var u
+move 1 r0
+move r0 a
+label label1
+move 1 r1
+cmpi a r1
+jne label2
+move 1 r2
+muli a r2
+move r2 g
+sys writei g
+jmp label3
+label label2
+label label3
+move 2 r3
+cmpi a r3
+jne label4
+move 2 r4
+muli a r4
+move r4 p
+sys writei p
+jmp label5
+label label4
+label label5
+move 3 r5
+cmpi a r5
+jne label6
+move 3 r6
+muli a r6
+move r6 k
+sys writei k
+jmp label7
+label label6
+label label7
+move 4 r7
+cmpi a r7
+jne label8
+move 4 r8
+muli a r8
+move r8 u
+sys writei u
+jmp label9
+label label8
+label label9
+move 20 r9
+move a r10
+addi r9 r10
+move r10 a
+move 120 r11
+cmpi a r11
+jle label1
+sys halt

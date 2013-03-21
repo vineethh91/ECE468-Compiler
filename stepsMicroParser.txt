@@ -1,0 +1,11 @@
+If using eclipse:
+
+	java org.antlr.Tool MicroParser.g
+	mv MicroParserParser.java MicroParserLexer.java MicroParser.tokens src/
+
+If using makefile :
+	remove MicroParserPArser/Lexer/.tokens from src/
+	run make all
+	cd classes
+	cp ../runAll.sh .
+	./runAll.sh

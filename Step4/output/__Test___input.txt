@@ -1,0 +1,8 @@
+PROGRAM p
+BEGIN
+
+	INT a,b,c;
+	
+	FUNCTION VOID main()
+	BEGIN
+		a := 20;

@@ -1,0 +1,89 @@
+PROGRAM p
+BEGIN
+
+	INT a,k,g,p,u;
+
+	FUNCTION VOID main()
+	BEGIN
+
+		a := 1;
+    REPEAT
+			IF (a = 1)
+			THEN
+				g := 1*a;
+				IF (a = 1)
+				THEN
+					g := 1*a;
+					IF (a = 1)
+				THEN
+					g := 1*a;
+ REPEAT
+			IF (a = 1)
+			THEN
+				g := 1*a;
+				IF (a = 1)
+				THEN
+					g := 1*a;
+					IF (a = 1)
+				THEN
+					g := 1*a;
+					WRITE (g);
+				ENDIF
+					WRITE (g);
+				ENDIF
+		
+				WRITE (g);
+			ENDIF
+		
+			IF (a = 2)
+			THEN
+				p := 2*a;
+				WRITE (p);
+			ENDIF
+		
+			IF (a = 3)
+			THEN
+				k := 3*a;
+				WRITE (k);
+			ENDIF
+		
+			IF (a = 4)
+			THEN
+				u := 4*a;
+				WRITE (u);
+			ENDIF
+			
+			a := a + 20;
+		UNTIL (a > 120);
+
+					WRITE (g);
+				ENDIF
+					WRITE (g);
+				ENDIF
+		
+				WRITE (g);
+			ENDIF
+		
+			IF (a = 2)
+			THEN
+				p := 2*a;
+				WRITE (p);
+			ENDIF
+		
+			IF (a = 3)
+			THEN
+				k := 3*a;
+				WRITE (k);
+			ENDIF
+		
+			IF (a = 4)
+			THEN
+				u := 4*a;
+				WRITE (u);
+			ENDIF
+			
+			a := a + 20;
+		UNTIL (a > 120);
+
+	END
+END

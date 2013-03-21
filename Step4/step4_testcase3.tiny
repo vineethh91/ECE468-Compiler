@@ -1,0 +1,44 @@
+var a
+var b
+var c
+push
+push r0
+push r1
+push r2
+push r3
+jsr main
+sys halt
+label main
+link 0
+move 20 r0
+move r0 a
+move 30 r1
+move r1 b
+move 40 r2
+move r2 c
+move a r3
+muli b r3
+move c r4
+addi r3 r4
+move a r5
+muli b r5
+addi c r5
+divi a r5
+addi r5 r4
+move 20 r6
+addi r6 r4
+move r4 c
+move b r7
+muli b r7
+addi a r7
+move r7 b
+move b r8
+muli a r8
+divi a r8
+move r8 a
+sys writei c
+sys writei b
+sys writei a
+unlnk 
+ret 
+end

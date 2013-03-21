@@ -1,0 +1,39 @@
+;LABEL main
+;WRITEI a
+;READI b
+;STOREI function1 $T1
+;STOREI $T1 a
+;STOREI function2 $T2
+;STOREI $T2 c
+;ADDI a b $T3
+;STOREI $T3 c
+var i
+var a
+var b
+var c
+var x
+var y
+var z
+var h
+var s1
+push
+push r0
+push r1
+push r2
+push r3
+jsr main
+sys halt
+label main
+link 0
+sys writei a
+sys readi b
+move function1 r1
+move r1 a
+move function2 r2
+move r2 c
+move a r3
+addi b r3
+move r3 c
+unlnk
+ret
+end

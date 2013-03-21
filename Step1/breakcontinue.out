@@ -1,0 +1,228 @@
+Token Type: KEYWORD
+Value: PROGRAM
+Token Type: IDENTIFIER
+Value: sqrt
+Token Type: KEYWORD
+Value: BEGIN
+Token Type: KEYWORD
+Value: STRING
+Token Type: IDENTIFIER
+Value: dummy
+Token Type: OPERATOR
+Value: :=
+Token Type: STRINGLITERAL
+Value: "abcde"
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: INT
+Token Type: IDENTIFIER
+Value: i
+Token Type: OPERATOR
+Value: ,
+Token Type: IDENTIFIER
+Value: j
+Token Type: OPERATOR
+Value: ,
+Token Type: IDENTIFIER
+Value: iprime
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: FUNCTION
+Token Type: KEYWORD
+Value: VOID
+Token Type: IDENTIFIER
+Value: main
+Token Type: OPERATOR
+Value: (
+Token Type: OPERATOR
+Value: )
+Token Type: KEYWORD
+Value: BEGIN
+Token Type: IDENTIFIER
+Value: i
+Token Type: OPERATOR
+Value: :=
+Token Type: INTLITERAL
+Value: 0
+Token Type: OPERATOR
+Value: ;
+Token Type: IDENTIFIER
+Value: iprime
+Token Type: OPERATOR
+Value: :=
+Token Type: INTLITERAL
+Value: 0
+Token Type: OPERATOR
+Value: ;
+Token Type: IDENTIFIER
+Value: j
+Token Type: OPERATOR
+Value: :=
+Token Type: INTLITERAL
+Value: 0
+Token Type: OPERATOR
+Value: ;
+Token Type: IDENTIFIER
+Value: result
+Token Type: OPERATOR
+Value: :=
+Token Type: INTLITERAL
+Value: 0
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: REPEAT
+Token Type: IDENTIFIER
+Value: i
+Token Type: OPERATOR
+Value: :=
+Token Type: IDENTIFIER
+Value: i
+Token Type: OPERATOR
+Value: +
+Token Type: INTLITERAL
+Value: 1
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: IF
+Token Type: OPERATOR
+Value: (
+Token Type: IDENTIFIER
+Value: i
+Token Type: OPERATOR
+Value: >
+Token Type: INTLITERAL
+Value: 69
+Token Type: OPERATOR
+Value: )
+Token Type: KEYWORD
+Value: THEN
+Token Type: KEYWORD
+Value: CONTINUE
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: ENDIF
+Token Type: IDENTIFIER
+Value: iprime
+Token Type: OPERATOR
+Value: :=
+Token Type: IDENTIFIER
+Value: iprime
+Token Type: OPERATOR
+Value: +
+Token Type: INTLITERAL
+Value: 1
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: REPEAT
+Token Type: KEYWORD
+Value: IF
+Token Type: OPERATOR
+Value: (
+Token Type: IDENTIFIER
+Value: j
+Token Type: OPERATOR
+Value: >
+Token Type: INTLITERAL
+Value: 49
+Token Type: OPERATOR
+Value: )
+Token Type: KEYWORD
+Value: THEN
+Token Type: KEYWORD
+Value: BREAK
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: ENDIF
+Token Type: IDENTIFIER
+Value: j
+Token Type: OPERATOR
+Value: :=
+Token Type: IDENTIFIER
+Value: j
+Token Type: OPERATOR
+Value: +
+Token Type: INTLITERAL
+Value: 1
+Token Type: OPERATOR
+Value: ;
+Token Type: IDENTIFIER
+Value: result
+Token Type: OPERATOR
+Value: :=
+Token Type: IDENTIFIER
+Value: result
+Token Type: OPERATOR
+Value: +
+Token Type: INTLITERAL
+Value: 1
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: UNTIL
+Token Type: OPERATOR
+Value: (
+Token Type: IDENTIFIER
+Value: j
+Token Type: OPERATOR
+Value: >
+Token Type: INTLITERAL
+Value: 99
+Token Type: OPERATOR
+Value: )
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: UNTIL
+Token Type: OPERATOR
+Value: (
+Token Type: IDENTIFIER
+Value: i
+Token Type: OPERATOR
+Value: >
+Token Type: INTLITERAL
+Value: 99
+Token Type: OPERATOR
+Value: )
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: WRITE
+Token Type: OPERATOR
+Value: (
+Token Type: IDENTIFIER
+Value: result
+Token Type: OPERATOR
+Value: )
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: WRITE
+Token Type: OPERATOR
+Value: (
+Token Type: IDENTIFIER
+Value: j
+Token Type: OPERATOR
+Value: )
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: WRITE
+Token Type: OPERATOR
+Value: (
+Token Type: IDENTIFIER
+Value: i
+Token Type: OPERATOR
+Value: )
+Token Type: OPERATOR
+Value: ;
+Token Type: KEYWORD
+Value: END
+Token Type: KEYWORD
+Value: END

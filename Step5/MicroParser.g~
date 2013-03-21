@@ -1,0 +1,216 @@
+grammar Little;
+options{
+	backtrack=true;
+	memoize=true;
+	k=2;
+	output=AST;
+	ASTLabelType=CommonTree;
+	language=Java;
+}
+
+tokens {DECL;
+        ASSIGN;
+        FUNC_HDR;
+        PROG_HDR;
+        FUNC_BODY;
+        WRITE;
+        READ;
+        DOWHILE;
+        IF;
+        CONDITION;
+        ELSE;
+        PARAMS;
+        FUNC_CALL;
+        RETURN;
+        }
+        
+//@parser::header {import mypackage.*; }
+//@members{static class V extends CommonTree{
+//  public int lookhere;
+//}
+
+//}
+@rulecatch{}
+//decl : 'int'<node=TypeNode> ID<node=VarNode> ';' ;
+//decl : 'int'<V> ID<VarNode> ';' ;
+
+program 
+  : 
+    'PROGRAM' id 'BEGIN' pgm_body 'END' -> ^(PROG_HDR id pgm_body)
+  ;
+
+id
+  : IDENTIFIER
+    //{text = $IDENTIFIER.getText();}
+  ;
+
+pgm_body
+  : decl func_declarations
+  ;
+  
+decl
+  : (var_decl_list)* | (string_decl_list)*
+  ;
+  
+/* Global String Declaration */
+string_decl_list
+  : (string_decl)+
+  ;
+string_decl
+  : 'STRING' t=id ':=' STRINGLITERAL ';' -> ^('STRING' id STRINGLITERAL)
+  ;
+  
+/* Variable Declaration */
+var_decl_list
+  : (var_decl)+
+  ;
+  
+var_decl
+  : 
+    var_type id (',' id)* ';' -> ^(DECL var_type id)+
+    
+  ;
+  
+var_type
+  : 
+    'FLOAT' | 'INT'
+  ;
+
+any_type
+  : 
+    var_type | 'VOID'
+  ; 
+
+
+/* Function Parameter List */
+param_decl_list
+  : (var_type id (',' var_type id)*)->^(PARAMS ^(var_type id)+)//(var_type a=id -> ^($a)) (',' var_type b=id -> ^($b $param_decl_list))*
+  ;
+  
+/* Function Declarations */
+
+func_declarations
+  : (func_decl)*
+  ;
+func_decl
+  : 
+    f='FUNCTION' rt=any_type func_id=id '(' (param_decl_list)? ')' 'BEGIN' func_body 'END' -> ^(FUNC_HDR id param_decl_list? func_body)//{"this will try to add another node to the tree, so it has to be a node, or code that will generate a node"}
+  ;
+func_body
+  : decl stmt_list// -> ^(FUNC_BODY decl stmt_list)
+  ;
+
+call_expr
+  : id '(' (expr_list)? ')' -> ^(FUNC_CALL id expr_list)
+  ;
+  
+expr_list
+  : expr (','! expr)*
+  ;
+
+/* Statement List */
+
+stmt_list
+  : (stmt)*
+  ;
+stmt
+  : assign_stmt | write_stmt | do_stmt | read_stmt | if_stmt | return_stmt
+  ;
+  
+/* Basic Statements */
+
+assign_stmt
+  : id ':=' expr ';' -> ^(ASSIGN id expr)
+  ;
+  
+read_stmt
+  : 'READ' '(' id (',' id)* ')' ';' -> ^(READ id)+
+  ; 
+write_stmt
+  : 'WRITE' '(' id (',' id)* ')' ';'  -> ^(WRITE id)+
+  ;
+return_stmt
+  : 'RETURN' expr ';' -> ^(RETURN expr)
+  ;
+
+/* Expressions */
+
+expr 
+  : factor (addop^ factor)*
+  ;
+factor 
+  :
+    postfix_expr (mulop^ postfix_expr)*
+  ;
+postfix_expr
+  : (primary)
+    
+  ;
+
+primary
+  : (call_expr
+    |'('! expr ')'!
+    | id  
+    | INTLITERAL  
+    | FLOATLITERAL )
+  ;
+addop
+  : ('+' | '-')
+  ;
+mulop
+  : ('*'| '/')
+  ;
+  
+/* Complex Statements and Condition */
+// 'WRITE' '(' id (',' id)* ')' ';'  -> ^(WRITE id)+
+if_stmt
+  : 'IF' '(' cond ')' 'THEN' stmt_list (else_expr)? 'ENDIF' -> ^(IF cond stmt_list else_expr?)
+  ;
+else_expr
+  : 'ELSE' stmt_list -> ^(ELSE stmt_list)
+  ;
+cond_expr
+  : cond -> ^(CONDITION cond)
+  ;
+cond
+  : expr ('<'^ | '>'^ | '='^ | '!='^) expr
+  ;
+do_stmt
+  : 'DO' stmt_list 'WHILE' '(' cond_expr ')' ';' -> ^(DOWHILE cond_expr stmt_list)
+  ;
+  
+/*Lexer Rules*/
+KEYWORD
+
+	:	'PROGRAM'|'BEGIN'|'END'|'PROTO'|'FUNCTION'|'READ'|'WRITE'|
+		'IF'|'THEN'|'ELSE'|'ENDIF'|'RETURN'|'CASE'|'ENDCASE'|
+		'BREAK'|'DEFAULT'|'DO'|'WHILE'|
+		'FLOAT'|'INT'|'VOID'|'STRING'
+	;
+
+IDENTIFIER
+
+	:	('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*
+	;
+	
+STRINGLITERAL
+	:	'"' ( ~('--'|'"') )* '"'
+	;
+	
+FLOATLITERAL
+	:	('0'..'9')?'.'('0'..'9')+
+	;
+
+fragment OPERATOR
+  : ('+' | '-' | '*' | '/')
+  ;
+	
+INTLITERAL
+	:	('0'..'9')+
+	;
+	
+COMMENT
+	:	'--' ( ~('--'|'"'|'\n') )* {$channel = HIDDEN;}
+	;
+	
+WS  : (' '|'\r'|'\n'|'\t')+ {$channel = HIDDEN;} 

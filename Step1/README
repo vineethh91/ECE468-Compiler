@@ -1,0 +1,4 @@
+Please put your antlr.jar file in "lib" directory and submit it with other files.
+
+Steps : go inside the /bin folder and then execute
+java -cp .:../lib/antlrworks-1.4.3.jar Micro ../fibonacci.micro

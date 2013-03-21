@@ -1,0 +1,30 @@
+var a
+var b
+var i
+var p
+move 0 r0
+move r0 i
+move 0 r1
+move r1 a
+move 0 r2
+move r2 b
+label label1
+sys readi p
+move 10 r3
+cmpi p r3
+jle label2
+move 1 r4
+move a r5
+addi r4 r5
+move r5 a
+label label2
+move 1 r8
+move i r9
+addi r8 r9
+move r9 i
+move 10 r10
+cmpi i r10
+jne label1
+sys writei a
+sys writei b
+sys halt

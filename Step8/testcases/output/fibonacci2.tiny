@@ -1,0 +1,130 @@
+str input "Please input an integer number: "
+str space " "
+str eol "\n"
+push
+push r0
+push r1
+push r2
+push r3
+jsr main
+sys halt
+label F
+link 2
+move 2 r1
+cmpi $6 r1
+jle lbl_0
+push
+move $6 r2
+subi 1 r2
+push r2
+push r0
+push r1
+push r2
+push r3
+jsr F
+pop r3
+pop r2
+pop r1
+pop r0
+pop
+pop r0
+move r0 $-1
+move r1 $-6
+push
+move $6 r2
+subi 2 r2
+push r2
+push r0
+push r1
+push r2
+push r3
+jsr F
+pop r3
+pop r2
+pop r1
+pop r0
+pop
+pop r0
+move r0 $-2
+move r1 $-7
+move $-1 r3
+addi $-2 r3
+move r3 $7
+move r0 $-6
+move r1 $-7
+unlnk
+ret
+jmp lbl_6
+label lbl_0
+move 0 r1
+cmpi $6 r1
+jne lbl_2
+move 0 r0
+move r0 $7
+unlnk
+ret
+jmp lbl_6
+label lbl_2
+move 1 r1
+cmpi $6 r1
+jne lbl_4
+move 1 r0
+move r0 $7
+unlnk
+ret
+jmp lbl_6
+label lbl_4
+move 2 r1
+cmpi $6 r1
+jne lbl_6
+move 1 r0
+move r0 $7
+unlnk
+ret
+label lbl_6
+unlnk
+ret
+label main
+link 3
+move 0 r1
+move r1 $-1
+move r1 $-6
+sys writes input
+sys readi $-2
+label lbl_7
+push
+push $-1
+push r0
+push r1
+push r2
+push r3
+jsr F
+pop r3
+pop r2
+pop r1
+pop r0
+pop
+pop r2
+move r2 $-3
+move r0 $-7
+move r1 $-6
+move r3 $-8
+sys writei $-1
+sys writes space
+sys writei $-3
+sys writes eol
+move $-1 r3
+addi 1 r3
+move r3 $-1
+move r0 $-6
+move r1 $-8
+move $-2 r2
+cmpi $-1 r2
+jne lbl_7
+move r0 $-6
+move r1 $-7
+move 0 r0
+move r0 $6
+unlnk
+ret
+end
